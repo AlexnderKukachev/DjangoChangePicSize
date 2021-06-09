@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}Список изображений{% endblock %}
+
+{% block content %}
+
+    <h2>Список изображений</h2>
+    {% if all_pics %}
+        {% for a in all_pics %}
+            <a href="{% url 'TestTask: exact_pic' pic.id %}">{{a.pic_name}}</a>
+        {% endfor %}
+    {% else %}
+            <p>Нет доступных изображений</p>
+    {% endif %}
+    <a href="{% url 'TestTask:addpic' %}">Добавить изображение</a>
+
+{% endblock %}

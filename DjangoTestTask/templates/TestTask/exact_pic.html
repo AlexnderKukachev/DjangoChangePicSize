@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}{{pic.pic_name}}{% endblock %}
+
+{% block content %}
+    <a href="{% url 'TestTask:index' %}">Назад к списку</a>
+    <h2>{{pic.pic_name}}</h2>
+    <form method="POST" novalidate action="{% url 'TestTask:exact_pic' %}">
+        <p>Щирина</p>
+        <input value="{{}}">
+        <p>Высота</p>
+        <input value="{{}}"><br>
+        <br>
+        <button type="submit">Отправить</button>
+    </form>
+{% endblock %}

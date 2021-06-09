@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block title %}Добавьте ваше изображение{% endblock %}
+
+{% block content %}
+    <a href="{% url 'TestTask:index' %}">Назад к списку</a>
+    <h2>Новое изображение</h2>
+    <form method="POST" novalidate action="{% url 'TestTask:the_new_pic' %}" enctype="multipart/form-data">
+
+        {% csrf_token %}
+
+        <p>Ссылка</p>
+        <input>
+        <p>Файл</p>
+        <input type="file" accept="image/*" name="file"><br>
+        <br>
+        <button type="submit">Отправить</button>
+    </form>
+{% endblock %}
