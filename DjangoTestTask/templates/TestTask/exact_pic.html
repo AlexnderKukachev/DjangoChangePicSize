@@ -1,16 +1,22 @@
 {% extends 'base.html' %}
+{% load static %}
 
-{% block title %}{{pic.pic_name}}{% endblock %}
+{% block title %}{{pic.name}}{% endblock %}
 
 {% block content %}
     <a href="{% url 'TestTask:index' %}">Назад к списку</a>
-    <h2>{{pic.pic_name}}</h2>
-    <form method="POST" novalidate action="{% url 'TestTask:exact_pic' %}">
-        <p>Щирина</p>
-        <input value="{{}}">
+    <h2>{{pic.name}}</h2>
+    <form method="post" novalidate>
+
+        {% csrf_token %}
+
+        <p>Ширина</p>
+        {{form.width}}
         <p>Высота</p>
-        <input value="{{}}"><br>
-        <br>
+        {{form.height}}
+        <br><br>
         <button type="submit">Отправить</button>
     </form>
+    <p>{{error}}</p>
+    <img src="{% if pic.pic %}{% static pic.pic %}{% else %}{{pic.url}}{% endif %}" height="{{height}}" width="{{width}}">
 {% endblock %}

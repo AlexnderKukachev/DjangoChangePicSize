@@ -5,15 +5,18 @@
 {% block content %}
     <a href="{% url 'TestTask:index' %}">Назад к списку</a>
     <h2>Новое изображение</h2>
-    <form method="POST" novalidate action="{% url 'TestTask:the_new_pic' %}" enctype="multipart/form-data">
+    <form method="post" novalidate enctype="multipart/form-data">
 
         {% csrf_token %}
 
         <p>Ссылка</p>
-        <input>
+        {{url_form.url}}
         <p>Файл</p>
-        <input type="file" accept="image/*" name="file"><br>
+        <input type="file" accept="image/*" name="pic">
         <br>
-        <button type="submit">Отправить</button>
+        <br>
+        <button type="submit">Отправить</button><br>
+        <br>
+        <span>{{error}}</span>
     </form>
 {% endblock %}
